@@ -10,14 +10,14 @@ class LicenseManager
 
     public function __construct()
     {
-        $this->pluginBaseName = 'fluent-booking-pro/fluent-booking-pro.php';;
+        $this->pluginBaseName = 'fluent-booking/fluent-booking.php';
 
         $urlBase = apply_filters('fluent_booking_pro/menu_url_base', admin_url('admin.php?page=fluent-booking#/'));
 
         $this->settings = [
             'item_id'        => 7067651,
             'license_server' => 'https://api3.wpmanageninja.com/plugin',
-            'plugin_file'    => FLUENT_BOOKING_PRO_DIR_FILE,
+            'plugin_file'    => FLUENT_BOOKING_DIR_FILE,
             'store_url'      => 'https://wpmanageninja.com',
             'version'        => FLUENT_BOOKING_PRO_VERSION,
             'purchase_url'   => 'https://fluentbooking.com/',
@@ -46,7 +46,7 @@ class LicenseManager
             return $links;
         }
 
-        $checkUpdateUrl = esc_url(admin_url('plugins.php?fluent-booking-pro-check-update=' . time()));
+        $checkUpdateUrl = esc_url(admin_url('plugins.php?fluent-booking-check-update=' . time()));
 
         $row_meta = array(
             'docs'         => '<a href="' . esc_url(apply_filters('fluent_booking_pro/docs_url', 'https://fluentbooking.com/docs/')) . '" aria-label="' . esc_attr__('View FluentBooking documentation', 'fluent-booking-pro') . '">' . esc_html__('Docs', 'fluent-booking-pro') . '</a>',
@@ -442,7 +442,7 @@ class LicenseManager
         );
 
         add_action('fluent_booking/daily_tasks', function () {
-            do_action('fluent_plugins_renew_version_info_fluent-booking-pro', true);
+            do_action('fluent_plugins_renew_version_info_fluent-booking', true);
         }, 1000);
 
     }
