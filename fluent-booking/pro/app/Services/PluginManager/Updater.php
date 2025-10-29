@@ -360,7 +360,7 @@ class Updater
             $this->delete_transients();
         }
 
-        if (isset($_GET['fluent-booking-pro-check-update'])) {
+        if (isset($_GET['fluent-booking-check-update'])) {
             if (current_user_can('update_plugins')) {
                 $this->delete_transients();
 

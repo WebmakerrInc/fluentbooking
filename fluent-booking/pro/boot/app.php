@@ -38,7 +38,9 @@ return function ($file) {
         }
     });
 
-    register_activation_hook($file, function () {
+    $activationFile = defined('FLUENT_BOOKING_DIR_FILE') ? FLUENT_BOOKING_DIR_FILE : $file;
+
+    register_activation_hook($activationFile, function () use ($file) {
 
         if (defined('FLUENT_BOOKING_DIR')) {
             // Temp Free version Migrator
@@ -49,55 +51,57 @@ return function ($file) {
         DBMigrator::run();
     });
 
-    add_action('admin_notices', function () {
-        if (defined('FLUENT_BOOKING_LITE')) {
-            return;
-        }
-
-        function fluentBookingGetInstallationDetails()
-        {
-            $activation = (object)[
-                'action' => 'install',
-                'url'    => ''
-            ];
-
-            $allPlugins = get_plugins();
-
-            if (isset($allPlugins['fluent-booking/fluent-booking.php'])) {
-                $url = wp_nonce_url(
-                    self_admin_url('plugins.php?action=activate&plugin=fluent-booking/fluent-booking.php'),
-                    'activate-plugin_fluent-booking/fluent-booking.php'
-                );
-                $activation->action = 'activate';
-            } else {
-                $api = (object)[
-                    'slug' => 'fluent-booking'
-                ];
-                $url = wp_nonce_url(
-                    self_admin_url('update.php?action=install-plugin&plugin=' . $api->slug),
-                    'install-plugin_' . $api->slug
-                );
+    if (!defined('FLUENT_BOOKING_DIR')) {
+        add_action('admin_notices', function () {
+            if (defined('FLUENT_BOOKING_LITE')) {
+                return;
             }
 
-            $activation->url = $url;
+            function fluentBookingGetInstallationDetails()
+            {
+                $activation = (object)[
+                    'action' => 'install',
+                    'url'    => ''
+                ];
 
-            return $activation;
-        }
+                $allPlugins = get_plugins();
 
-        $pluginInfo = fluentBookingGetInstallationDetails();
+                if (isset($allPlugins['fluent-booking/fluent-booking.php'])) {
+                    $url = wp_nonce_url(
+                        self_admin_url('plugins.php?action=activate&plugin=fluent-booking/fluent-booking.php'),
+                        'activate-plugin_fluent-booking/fluent-booking.php'
+                    );
+                    $activation->action = 'activate';
+                } else {
+                    $api = (object)[
+                        'slug' => 'fluent-booking'
+                    ];
+                    $url = wp_nonce_url(
+                        self_admin_url('update.php?action=install-plugin&plugin=' . $api->slug),
+                        'install-plugin_' . $api->slug
+                    );
+                }
 
-        $class = 'notice notice-error booking_notice';
+                $activation->url = $url;
 
-        $install_url_text = 'Click Here to Install the Plugin';
+                return $activation;
+            }
 
-        if ($pluginInfo->action == 'activate') {
-            $install_url_text = 'Click Here to Activate the Plugin';
-        }
+            $pluginInfo = fluentBookingGetInstallationDetails();
 
-        $message = '<b>HEADS UP:</b> FluentBooking Pro Requires FluentBooking Base Plugin, <b><a href="' . $pluginInfo->url
-            . '">' . $install_url_text . '</a></b>';
+            $class = 'notice notice-error booking_notice';
 
-        printf('<div class="%1$s"><p>%2$s</p></div>', esc_attr($class), $message);
-    });
+            $install_url_text = 'Click Here to Install the Plugin';
+
+            if ($pluginInfo->action == 'activate') {
+                $install_url_text = 'Click Here to Activate the Plugin';
+            }
+
+            $message = '<b>HEADS UP:</b> FluentBooking Pro Requires FluentBooking Base Plugin, <b><a href="' . $pluginInfo->url
+                . '">' . $install_url_text . '</a></b>';
+
+            printf('<div class="%1$s"><p>%2$s</p></div>', esc_attr($class), $message);
+        });
+    }
 
 };

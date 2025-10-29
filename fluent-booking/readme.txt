@@ -11,6 +11,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 The ultimate solution for booking appointments, meetings, webinars, events, sales calls, and more.
 
+**New in 1.9.11:** FluentBooking now ships with all FluentBooking Pro features out of the box. Install a single plugin and enjoy
+the complete experience without managing separate extensions.
+
 == Description ==
 [FluentBooking](https://fluentbooking.com/) is a top-notch solution for scheduling and delivering appointment-based services. Whether it's an appointment, event, or anything else, FluentBooking has you covered!
 

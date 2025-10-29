@@ -1,15 +1,10 @@
 <?php defined('ABSPATH') or die;
 /**
- * Plugin Name: FluentBooking Pro
- * Description: The Pro version of FluentBooking Plugin
- * Version: 1.9.10
- * Author: WPManageNinja LLC
- * Author URI: https://fluentbooking.com
- * Plugin URI: https://fluentbooking.com
- * License: GPLv2 or later
- * Text Domain: fluent-booking-pro
- * Domain Path: /language
- * Requires Plugins: fluent-booking
+ * FluentBooking Pro module bootstrapper.
+ *
+ * This file no longer represents a standalone WordPress plugin entry point.
+ * It is retained to keep backward compatibility with paths that expect the
+ * previous file name while the Pro features are loaded from the unified plugin.
  */
 
 if (defined('FLUENT_BOOKING_PRO_DIR_FILE')) {
