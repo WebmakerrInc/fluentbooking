@@ -48,6 +48,11 @@ use FluentBooking\App\Models\Booking;
     <?php endforeach; ?>
 
     <style>
+        :root {
+            --fcal_primaryColor: #000;
+            --fcal_primary_color: #000;
+        }
+
         .fcal_wrap {
             display: block;
             max-width: 1000px !important;

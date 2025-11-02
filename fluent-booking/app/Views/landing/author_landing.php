@@ -36,6 +36,7 @@
         :root {
             --fcal_dark: #1B2533;
             --fcal_primaryColor: #000;
+            --fcal_primary_color: #000;
             --fcal_gray: #6b7280;
         }
 

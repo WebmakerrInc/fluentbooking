@@ -908,6 +908,18 @@ class Helper
 
     public static function excerpt($text, $max_length = 160)
     {
+        if ($text === null) {
+            return '';
+        }
+
+        if (!is_string($text)) {
+            if (is_scalar($text)) {
+                $text = (string) $text;
+            } else {
+                return '';
+            }
+        }
+
         // Strip HTML tags and convert entities to their corresponding characters
         $text = html_entity_decode(wp_strip_all_tags($text));
 
