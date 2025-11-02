@@ -35,21 +35,51 @@
     <style>
         :root {
             --fcal_dark: #1B2533;
-            --fcal_primaryColor: #2653C7;
+            --fcal_primaryColor: #000;
             --fcal_gray: #6b7280;
         }
 
-        .fluent_booking_wrap {
-            max-width: 752px;
-            margin: 40px auto;
+        html,
+        body {
+            height: 100%;
         }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            overflow: auto;
+        }
+
+        .fcal_landing_center {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .fcal_landing_center .fluent_booking_wrap {
+            max-width: 752px;
+            margin: 0 auto;
+            transform: scale(0.9);
+            transform-origin: center;
+            transition: transform 0.3s ease;
+        }
+
         .fluent_booking_app {
             margin-top: 66px;
         }
+
         .fcal_author_header {
             max-width: 600px;
             margin: auto;
         }
+
         .fcal_slot {
             background: #fff;
         }
@@ -57,6 +87,33 @@
         .fcal_phone_wrapper .flag {
             background: url(<?php echo esc_url(\FluentBooking\App\App::getInstance()['url.assets'].'images/flags_responsive.png'); ?>) no-repeat;
             background-size: 100%;
+        }
+
+        .fcal_powered_by {
+            font-size: 12px;
+            color: #777;
+            text-align: center;
+        }
+
+        .fcal_powered_by a {
+            color: #777;
+            text-decoration: none;
+        }
+
+        .fcal_powered_by a:hover,
+        .fcal_powered_by a:focus {
+            color: #555;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 30px 16px;
+            }
+
+            .fcal_landing_center .fluent_booking_wrap {
+                transform: scale(1);
+            }
         }
     </style>
 
@@ -67,11 +124,14 @@
     <?php do_action('fluent_booking/main_landing'); ?>
 </head>
 <body>
+    <div class="fcal_landing_center">
         <?php \FluentBooking\App\App::getInstance('view')->render('landing.author_html', [
             'author' => $author,
             'calendar' => $calendar,
             'events' => $events
         ]); ?>
+        <div class="fcal_powered_by">
+            <a href="https://webmakerr.com" target="_blank" rel="noopener noreferrer">Powered by: Webmakerr.com</a>
         </div>
     </div>
 
