@@ -12,7 +12,7 @@ class CalendarIntegrationService
     {
         $slotId = intval(Arr::get($attr, 'slot_id'));
         $integrationId = intval(Arr::get($attr, 'integration_id'));
-        $integrationName = sanitize_text_field(Arr::get($attr, 'integration_name'));
+        $integrationName = sanitize_text_field(Arr::get($attr, 'integration_name', ''));
 
         $settings = [
             'conditionals' => [
@@ -61,8 +61,8 @@ class CalendarIntegrationService
     {
         $slotId = intval(Arr::get($attr, 'slot_id'));
         $integrationId = intval(Arr::get($attr, 'integration_id'));
-        $integrationName = sanitize_text_field(Arr::get($attr, 'integration_name'));
-        $dataType = sanitize_text_field(Arr::get($attr, 'data_type'));
+        $integrationName = sanitize_text_field(Arr::get($attr, 'integration_name', ''));
+        $dataType = sanitize_text_field(Arr::get($attr, 'data_type', ''));
         $status = Arr::get($attr, 'status', true);
         $metaValue = Arr::get($attr, 'integration');
 

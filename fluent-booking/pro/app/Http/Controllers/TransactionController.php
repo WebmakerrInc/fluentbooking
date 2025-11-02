@@ -22,8 +22,8 @@ class TransactionController extends Controller
         $oldStatus = $transaction->status;
 
         $transactionData = [
-            'status' => sanitize_text_field(Arr::get($data, 'status')),
-            'vendor_charge_id' => sanitize_text_field(Arr::get($data, 'vendor_charge_id')),
+            'status' => sanitize_text_field(Arr::get($data, 'status', '')),
+            'vendor_charge_id' => sanitize_text_field(Arr::get($data, 'vendor_charge_id', '')),
             'meta' => json_encode(Arr::get($data, 'meta', [])),
         ];
 

@@ -108,15 +108,15 @@ class CalendarService
         }
 
         $preparedData = [
-            'title'           => sanitize_text_field(Arr::get($calendarData, 'title')),
+            'title'           => sanitize_text_field(Arr::get($calendarData, 'title', '')),
             'description'     => sanitize_textarea_field(Arr::get($calendarData, 'description')),
             'user_id'         => intval(Arr::get($calendarData, 'user_id')),
             'status'          => sanitize_text_field(Arr::get($calendarData, 'status', 'active')),
             'type'            => sanitize_text_field(Arr::get($calendarData, 'type', 'simple')),
-            'event_type'      => sanitize_text_field(Arr::get($calendarData, 'event_type')),
-            'account_type'    => sanitize_text_field(Arr::get($calendarData, 'account_type')),
-            'visibility'      => sanitize_text_field(Arr::get($calendarData, 'visibility')),
-            'author_timezone' => sanitize_text_field(Arr::get($calendarData, 'author_timezone')),
+            'event_type'      => sanitize_text_field(Arr::get($calendarData, 'event_type', '')),
+            'account_type'    => sanitize_text_field(Arr::get($calendarData, 'account_type', '')),
+            'visibility'      => sanitize_text_field(Arr::get($calendarData, 'visibility', '')),
+            'author_timezone' => sanitize_text_field(Arr::get($calendarData, 'author_timezone', '')),
         ];
 
         if ($useCurrentUser || !Arr::get($preparedData, 'user_id')) {
@@ -179,23 +179,23 @@ class CalendarService
     protected static function prepareEventData($eventData, $calendar, $availabilities = [])
     {
         $preparedEventData = [
-            'title'             => sanitize_text_field(Arr::get($eventData, 'title')),
+            'title'             => sanitize_text_field(Arr::get($eventData, 'title', '')),
             'duration'          => (int)Arr::get($eventData, 'duration', 30),
             'description'       => wp_kses_post(Arr::get($eventData, 'description')),
-            'type'              => sanitize_text_field(Arr::get($eventData, 'type')),
+            'type'              => sanitize_text_field(Arr::get($eventData, 'type', '')),
             'status'            => sanitize_text_field(Arr::get($eventData, 'status', 'active')),
             'color_schema'      => sanitize_text_field(Arr::get($eventData, 'color_schema', '#0099ff')),
-            'event_type'        => sanitize_text_field(Arr::get($eventData, 'event_type')),
+            'event_type'        => sanitize_text_field(Arr::get($eventData, 'event_type', '')),
             'availability_id'   => (int)self::prepareAvailabilityId(Arr::get($eventData, 'availability_id', 0), $availabilities),
-            'availability_type' => sanitize_text_field(Arr::get($eventData, 'availability_type')),
-            'location_type'     => sanitize_text_field(Arr::get($eventData, 'location_type')),
+            'availability_type' => sanitize_text_field(Arr::get($eventData, 'availability_type', '')),
+            'location_type'     => sanitize_text_field(Arr::get($eventData, 'location_type', '')),
             'location_settings' => SanitizeService::locationSettings(Arr::get($eventData, 'location_settings', [])),
             'max_book_per_slot' => (int)Arr::get($eventData, 'max_book_per_slot', 1),
             'is_display_spots'  => (bool)Arr::get($eventData, 'is_display_spots', false),
         ];
 
         if (!empty($eventData['hash'])) {
-            $hash = sanitize_text_field($eventData['hash']);
+            $hash = sanitize_text_field($eventData['hash'] ?? '');
             if (!CalendarSlot::where('hash', $hash)->exists()) {
                 $preparedEventData['hash'] = $hash;
             }
@@ -208,10 +208,10 @@ class CalendarService
         }
 
         $preparedEventData['settings'] = [
-            'schedule_type'       => sanitize_text_field(Arr::get($eventSettings, 'schedule_type')),
+            'schedule_type'       => sanitize_text_field(Arr::get($eventSettings, 'schedule_type', '')),
             'weekly_schedules'    => SanitizeService::weeklySchedules(Arr::get($eventSettings, 'weekly_schedules', []), $calendar->author_timezone, 'UTC', true),
             'date_overrides'      => SanitizeService::slotDateOverrides(Arr::get($eventSettings, 'date_overrides', []), $calendar->author_timezone, 'UTC', null, true),
-            'range_type'          => sanitize_text_field(Arr::get($eventSettings, 'range_type')),
+            'range_type'          => sanitize_text_field(Arr::get($eventSettings, 'range_type', '')),
             'range_days'          => (int)(Arr::get($eventSettings, 'range_days', 60)) ?: 60,
             'range_date_between'  => SanitizeService::rangeDateBetween(Arr::get($eventSettings, 'range_date_between', ['', ''])),
             'schedule_conditions' => SanitizeService::scheduleConditions(Arr::get($eventSettings, 'schedule_conditions', [])),
@@ -235,7 +235,7 @@ class CalendarService
             ],
             'lock_timezone'       => [
                 'enabled'  => Arr::isTrue($eventSettings, 'lock_timezone.enabled'),
-                'timezone' => sanitize_text_field(Arr::get($eventSettings, 'lock_timezone.timezone'))
+                'timezone' => sanitize_text_field(Arr::get($eventSettings, 'lock_timezone.timezone', ''))
             ],
         ];
 

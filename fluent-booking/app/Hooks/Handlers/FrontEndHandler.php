@@ -562,7 +562,7 @@ class FrontEndHandler
             $request = $_REQUEST; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
             // Check for url params
-            if ($name = sanitize_text_field(Arr::get($request, 'invitee_name'))) {
+            if ($name = sanitize_text_field(Arr::get($request, 'invitee_name', ''))) {
                 $currentPerson['name'] = $name;
             }
 
@@ -926,13 +926,13 @@ class FrontEndHandler
         }
 
         $calendar = $calendarEvent->calendar;
-        $startDate = sanitize_text_field(Arr::get($request, 'start_date')); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+        $startDate = sanitize_text_field(Arr::get($request, 'start_date', '')); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
         if (!$startDate) {
             $startDate = gmdate('Y-m-d H:i:s'); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
         }
 
-        $timeZone = sanitize_text_field(Arr::get($request, 'timezone')); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+        $timeZone = sanitize_text_field(Arr::get($request, 'timezone', '')); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
         if (!$timeZone) {
             $timeZone = wp_timezone_string();

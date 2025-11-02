@@ -54,7 +54,7 @@ class CouponModule
 
         $calendarEvent = CalendarSlot::findOrFail($eventId);
 
-        $couponCode = sanitize_text_field(Arr::get($data, 'coupon_code'));
+        $couponCode = sanitize_text_field(Arr::get($data, 'coupon_code', ''));
 
         $otherCoupons = array_map('sanitize_text_field', Arr::get($data, 'other_coupons', []));
 

@@ -308,9 +308,9 @@ class Paypal extends BasePaymentMethod
 
     private function getPayerName($data)
     {
-        $firstName = sanitize_text_field(Arr::get($data, 'first_name'));
-        
-        $lastName = sanitize_text_field(Arr::get($data, 'last_name'));
+        $firstName = sanitize_text_field(Arr::get($data, 'first_name', ''));
+
+        $lastName = sanitize_text_field(Arr::get($data, 'last_name', ''));
 
         return $firstName . ' ' . $lastName;
     }

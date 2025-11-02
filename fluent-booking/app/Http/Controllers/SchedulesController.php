@@ -25,7 +25,7 @@ class SchedulesController extends Controller
 
         $author = Arr::get($filters, 'author');
 
-        $eventType = sanitize_text_field(Arr::get($filters, 'event_type'));
+        $eventType = sanitize_text_field(Arr::get($filters, 'event_type', ''));
 
         $period = sanitize_text_field(Arr::get($filters, 'period', 'upcoming'));
 

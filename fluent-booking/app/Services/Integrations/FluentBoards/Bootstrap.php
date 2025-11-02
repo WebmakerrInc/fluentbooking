@@ -358,15 +358,15 @@ class Bootstrap extends IntegrationManagerController
 
         $boardId = intval(Arr::get($data, 'board_config.board_id'));
         $stageId = intval(Arr::get($data, 'board_config.stage_id'));
-        $priority = sanitize_text_field(Arr::get($data, 'board_config.priority'));
+        $priority = sanitize_text_field(Arr::get($data, 'board_config.priority', ''));
         $assignees = array_map('intval', Arr::get($data, 'board_config.member_ids', []));
         $boardLabels = array_map('intval', Arr::get($data, 'board_config.label_ids', []));
-        $taskTitle = sanitize_text_field(Arr::get($data, 'task_title'));
+        $taskTitle = sanitize_text_field(Arr::get($data, 'task_title', ''));
         $description = wp_kses_post(Arr::get($data, 'description'));
-        $position = sanitize_text_field(Arr::get($data, 'position'));
+        $position = sanitize_text_field(Arr::get($data, 'position', ''));
         $dueAtDays = intval(Arr::get($data, 'due_at_days'));
-        $dueAtType = sanitize_text_field(Arr::get($data, 'due_at_type'));
-        $authorName = sanitize_text_field(Arr::get($data, 'author_name'));
+        $dueAtType = sanitize_text_field(Arr::get($data, 'due_at_type', ''));
+        $authorName = sanitize_text_field(Arr::get($data, 'author_name', ''));
         $authorEmail = sanitize_email(Arr::get($data, 'email'));
 
         if (!$booking->id || !$boardId || !$stageId || !$taskTitle) {
