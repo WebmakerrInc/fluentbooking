@@ -345,7 +345,7 @@ class LandingPageHandler
 
     private function handleAfterBookingPage()
     {
-        $bookingHash = sanitize_text_field(Arr::get($_REQUEST, 'meeting_hash')); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+        $bookingHash = sanitize_text_field(Arr::get($_REQUEST, 'meeting_hash', '')); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
         if (!$bookingHash) {
             return;
         }

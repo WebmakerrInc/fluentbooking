@@ -30,7 +30,7 @@ class BookingFieldService
             if (is_array($value)) {
                 if ($customField['type'] === 'multi-select') {
                     $value = array_map(function ($item) {
-                        return sanitize_text_field(Arr::get($item, 'value'));
+                        return sanitize_text_field(Arr::get($item, 'value', ''));
                     },$value);
                 } else if ($customField['type'] === 'file') {
                     $maxField = Arr::get($customField, 'max_file_allow', 1);

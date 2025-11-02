@@ -323,7 +323,7 @@ class BlockEditorHandler
     {
         $calendarIds = Arr::get($attributes, 'calendarIds', []);
 
-        $title = sanitize_text_field(Arr::get($attributes, 'title'));
+        $title = sanitize_text_field(Arr::get($attributes, 'title', ''));
 
         $period = sanitize_text_field(Arr::get($attributes, 'period', 'all'));
 
@@ -333,7 +333,7 @@ class BlockEditorHandler
 
         $showPagination = Arr::isTrue($attributes, 'showPagination', true) ? 'show' : 'hide';
 
-        $noBookingsMessage = sanitize_text_field(Arr::get($attributes, 'noBookingsMessage'));
+        $noBookingsMessage = sanitize_text_field(Arr::get($attributes, 'noBookingsMessage', ''));
 
         return do_shortcode("[fluent_booking_lists title=\"$title\" period=$period per_page=$perPage filter=$showFilter pagination=$showPagination no_bookings=\"$noBookingsMessage\" calendar_ids=" . implode(',', $calendarIds) . "]");
     }

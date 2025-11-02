@@ -82,19 +82,19 @@ class CalendarController extends Controller
         }
 
         $event->settings = [
-            'booking_title'         => sanitize_text_field(Arr::get($data, 'booking_title')),
-            'submit_button_text'    => sanitize_text_field(Arr::get($data, 'submit_button_text')),
+            'booking_title'         => sanitize_text_field(Arr::get($data, 'booking_title', '')),
+            'submit_button_text'    => sanitize_text_field(Arr::get($data, 'submit_button_text', '')),
             'custom_redirect'       => [
                 'enabled'         => Arr::isTrue($data, 'custom_redirect.enabled'),
-                'redirect_url'    => sanitize_text_field(Arr::get($data, 'custom_redirect.redirect_url')),
+                'redirect_url'    => sanitize_text_field(Arr::get($data, 'custom_redirect.redirect_url', '')),
                 'is_query_string' => Arr::get($data, 'custom_redirect.is_query_string') == 'yes' ? 'yes' : 'no',
-                'query_string'    => sanitize_text_field(Arr::get($data, 'custom_redirect.query_string')),
+                'query_string'    => sanitize_text_field(Arr::get($data, 'custom_redirect.query_string', '')),
             ],
             'requires_confirmation' => [
                 'enabled'   => Arr::isTrue($data, 'requires_confirmation.enabled'),
-                'type'      => sanitize_text_field(Arr::get($data, 'requires_confirmation.type')),
+                'type'      => sanitize_text_field(Arr::get($data, 'requires_confirmation.type', '')),
                 'condition' => [
-                    'unit'  => sanitize_text_field(Arr::get($data, 'requires_confirmation.condition.unit')),
+                    'unit'  => sanitize_text_field(Arr::get($data, 'requires_confirmation.condition.unit', '')),
                     'value' => intval(Arr::get($data, 'requires_confirmation.condition.value'))
                 ]
             ],
@@ -104,19 +104,19 @@ class CalendarController extends Controller
             ],
             'can_not_cancel'       => [
                 'enabled'   => Arr::isTrue($data, 'can_not_cancel.enabled'),
-                'type'      => sanitize_text_field(Arr::get($data, 'can_not_cancel.type')),
-                'message'   => sanitize_text_field(Arr::get($data, 'can_not_cancel.message')),
+                'type'      => sanitize_text_field(Arr::get($data, 'can_not_cancel.type', '')),
+                'message'   => sanitize_text_field(Arr::get($data, 'can_not_cancel.message', '')),
                 'condition' => [
-                    'unit'  => sanitize_text_field(Arr::get($data, 'can_not_cancel.condition.unit')),
+                    'unit'  => sanitize_text_field(Arr::get($data, 'can_not_cancel.condition.unit', '')),
                     'value' => intval(Arr::get($data, 'can_not_cancel.condition.value'))
                 ]
             ],
             'can_not_reschedule'   => [
                 'enabled'   => Arr::isTrue($data, 'can_not_reschedule.enabled'),
-                'type'      => sanitize_text_field(Arr::get($data, 'can_not_reschedule.type')),
-                'message'   => sanitize_text_field(Arr::get($data, 'can_not_reschedule.message')),
+                'type'      => sanitize_text_field(Arr::get($data, 'can_not_reschedule.type', '')),
+                'message'   => sanitize_text_field(Arr::get($data, 'can_not_reschedule.message', '')),
                 'condition' => [
-                    'unit'  => sanitize_text_field(Arr::get($data, 'can_not_reschedule.condition.unit')),
+                    'unit'  => sanitize_text_field(Arr::get($data, 'can_not_reschedule.condition.unit', '')),
                     'value' => intval(Arr::get($data, 'can_not_reschedule.condition.value'))
                 ]
             ]

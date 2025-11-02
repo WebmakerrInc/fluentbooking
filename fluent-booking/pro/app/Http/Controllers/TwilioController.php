@@ -39,7 +39,7 @@ class TwilioController extends Controller
 
         foreach ($notifications as $key => $value) {
             $formattedNotifications[$key] = [
-                'title'   => sanitize_text_field(Arr::get($value, 'title')),
+                'title'   => sanitize_text_field(Arr::get($value, 'title', '')),
                 'enabled' => Arr::isTrue($value, 'enabled'),
                 'sms'     => $this->sanitizeNotificationData(Arr::get($value, 'sms')),
                 'is_host' => Arr::isTrue($value, 'is_host')

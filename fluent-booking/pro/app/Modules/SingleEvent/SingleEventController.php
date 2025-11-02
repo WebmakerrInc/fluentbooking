@@ -87,7 +87,7 @@ class SingleEventController extends Controller
 
         $calendar = $calendarEvent->calendar;
 
-        $startDate = sanitize_text_field(Arr::get($data, 'start_date'));
+        $startDate = sanitize_text_field(Arr::get($data, 'start_date', ''));
 
         $timeZone = $calendar->author_timezone;
 

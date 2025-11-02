@@ -38,20 +38,20 @@ class CouponService
     {
         return [
             'object_id' => 1,
-            'key'       => sanitize_text_field(Arr::get($data, 'coupon_code')),
+            'key'       => sanitize_text_field(Arr::get($data, 'coupon_code', '')),
             'value'     => [
-                'title'               => sanitize_text_field(Arr::get($data, 'title')),
+                'title'               => sanitize_text_field(Arr::get($data, 'title', '')),
                 'discount'            => round(Arr::get($data, 'discount'), 2),
-                'discount_type'       => sanitize_text_field(Arr::get($data, 'discount_type')),
+                'discount_type'       => sanitize_text_field(Arr::get($data, 'discount_type', '')),
                 'min_purchase_amount' => (int) Arr::get($data, 'min_purchase_amount', 0),
                 'max_discount_amount' => (int) Arr::get($data, 'max_discount_amount', 0),
                 'total_limit'         => (int) Arr::get($data, 'total_limit', 0),
                 'per_user_limit'      => (int) Arr::get($data, 'per_user_limit', 0),
-                'start_date'          => sanitize_text_field(Arr::get($data, 'start_date')),
-                'end_date'            => sanitize_text_field(Arr::get($data, 'end_date')),
+                'start_date'          => sanitize_text_field(Arr::get($data, 'start_date', '')),
+                'end_date'            => sanitize_text_field(Arr::get($data, 'end_date', '')),
                 'stackable'           => Arr::get($data, 'stackable') == 'yes' ? 'yes' : 'no',
                 'status'              => Arr::get($data, 'status', 'active'),
-                'internal_note'       => sanitize_text_field(Arr::get($data, 'internal_note')),
+                'internal_note'       => sanitize_text_field(Arr::get($data, 'internal_note', '')),
                 'allowed_event_ids'   => array_map('intval', Arr::get($data, 'allowed_event_ids', [])),
                 'usage_count'         => (int) Arr::get($data, 'usage_count', 0),
                 'failed_message'      => array_map('sanitize_text_field', Arr::get($data, 'failed_message', []))

@@ -163,7 +163,7 @@ class SanitizeService
 
         foreach ($locations as $locationIndex => $location) {
             $locationType = $location['type'];
-            $locationTitle = sanitize_text_field(Arr::get($location, 'title'));
+            $locationTitle = sanitize_text_field(Arr::get($location, 'title', ''));
 
             if (empty($locationTitle) && $locationType == 'ms_teams') {
                 $locationTitle = 'MS Teams';
@@ -172,7 +172,7 @@ class SanitizeService
             $sanitizedLocation = [
                 'type'               => sanitize_text_field($location['type']),
                 'title'              => $locationTitle,
-                'display_on_booking' => sanitize_text_field(Arr::get($location, 'display_on_booking'))
+                'display_on_booking' => sanitize_text_field(Arr::get($location, 'display_on_booking', ''))
             ];
 
             if ($locationType == 'online_meeting') {
@@ -180,7 +180,7 @@ class SanitizeService
             } elseif ($locationType == 'custom' || $locationType == 'in_person_organizer') {
                 $sanitizedLocation['description'] = sanitize_textarea_field(Arr::get($location, 'description'));
             } elseif ($locationType == 'phone_organizer') {
-                $sanitizedLocation['host_phone_number'] = sanitize_text_field(Arr::get($location, 'host_phone_number'));
+                $sanitizedLocation['host_phone_number'] = sanitize_text_field(Arr::get($location, 'host_phone_number', ''));
             }
 
             $sanitizedLocations[] = $sanitizedLocation;
