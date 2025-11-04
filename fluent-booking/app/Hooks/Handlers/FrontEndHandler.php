@@ -77,11 +77,13 @@ class FrontEndHandler
         $localizeData['disable_author'] = $atts['disable_author'] == 'yes';
         $localizeData['theme'] = $atts['theme'];
 
+        wp_enqueue_script('fluent-booking-geo-detect', $assetUrl . 'public/js/geo-detect.js', [], FLUENT_BOOKING_ASSETS_VERSION, true);
+
         if (BookingFieldService::hasPhoneNumberField($localizeData['form_fields'])) {
-            wp_enqueue_script('fluent-booking-phone-field', $assetUrl . 'public/js/phone-field.js', [], FLUENT_BOOKING_ASSETS_VERSION, true);
+            wp_enqueue_script('fluent-booking-phone-field', $assetUrl . 'public/js/phone-field.js', ['fluent-booking-geo-detect'], FLUENT_BOOKING_ASSETS_VERSION, true);
         }
 
-        wp_enqueue_script('fluent-booking-public', $assetUrl . 'public/js/app.js', [], FLUENT_BOOKING_ASSETS_VERSION, true);
+        wp_enqueue_script('fluent-booking-public', $assetUrl . 'public/js/app.js', ['fluent-booking-geo-detect'], FLUENT_BOOKING_ASSETS_VERSION, true);
 
         $this->loadGlobalVars();
         wp_localize_script(
@@ -158,7 +160,10 @@ class FrontEndHandler
     public function renderTeamHosts($calendars, $headerConfig = [])
     {
         $wrapperId = 'fcal_team_' . Helper::getNextIndex();
-        wp_enqueue_script('fluent-booking-team', App::getInstance('url.assets') . 'public/js/team_app.js', [], FLUENT_BOOKING_ASSETS_VERSION, true);
+        $assetUrl = App::getInstance('url.assets');
+
+        wp_enqueue_script('fluent-booking-geo-detect', $assetUrl . 'public/js/geo-detect.js', [], FLUENT_BOOKING_ASSETS_VERSION, true);
+        wp_enqueue_script('fluent-booking-team', $assetUrl . 'public/js/team_app.js', ['fluent-booking-geo-detect'], FLUENT_BOOKING_ASSETS_VERSION, true);
 
         $vars = [];
         foreach ($calendars as $calendar) {
@@ -190,8 +195,8 @@ class FrontEndHandler
 
         wp_localize_script('fluent-booking-team', $wrapperId, $vars);
 
-        $assetUrl = App::getInstance('url.assets');
-        wp_enqueue_script('fluent-booking-public', $assetUrl . 'public/js/app.js', [], FLUENT_BOOKING_ASSETS_VERSION, true);
+        $assetUrl = $assetUrl ?: App::getInstance('url.assets');
+        wp_enqueue_script('fluent-booking-public', $assetUrl . 'public/js/app.js', ['fluent-booking-geo-detect'], FLUENT_BOOKING_ASSETS_VERSION, true);
         $this->loadGlobalVars();
 
         return App::make('view')->make('public.team_page', [
@@ -260,7 +265,9 @@ class FrontEndHandler
     public function renderCalendarBlock($calendar, $headerConfig = [])
     {
         $wrapperId = 'fcal_calendar_' . Helper::getNextIndex();
-        wp_enqueue_script('fluent-booking-calendar', App::getInstance('url.assets') . 'public/js/calendar_app.js', [], FLUENT_BOOKING_ASSETS_VERSION, true);
+        $assetUrl = App::getInstance('url.assets');
+        wp_enqueue_script('fluent-booking-geo-detect', $assetUrl . 'public/js/geo-detect.js', [], FLUENT_BOOKING_ASSETS_VERSION, true);
+        wp_enqueue_script('fluent-booking-calendar', $assetUrl . 'public/js/calendar_app.js', ['fluent-booking-geo-detect'], FLUENT_BOOKING_ASSETS_VERSION, true);
 
         $calendarHtml = (string)(string)\FluentBooking\App\App::getInstance('view')->make('landing.author_html', [
             'author'   => $calendar->getAuthorProfile(),
@@ -289,8 +296,8 @@ class FrontEndHandler
 
         wp_localize_script('fluent-booking-calendar', $wrapperId, $vars);
 
-        $assetUrl = App::getInstance('url.assets');
-        wp_enqueue_script('fluent-booking-public', $assetUrl . 'public/js/app.js', [], FLUENT_BOOKING_ASSETS_VERSION, true);
+        $assetUrl = $assetUrl ?: App::getInstance('url.assets');
+        wp_enqueue_script('fluent-booking-public', $assetUrl . 'public/js/app.js', ['fluent-booking-geo-detect'], FLUENT_BOOKING_ASSETS_VERSION, true);
         $this->loadGlobalVars();
 
         return App::make('view')->make('public.calendar_page', [
