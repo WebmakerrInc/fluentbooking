@@ -36,7 +36,7 @@ return function ($file) {
             }
             add_filter('fluent_booking/dashboard_notices', function ($notices) {
                 $updateUrl = admin_url('plugins.php?s=fluent-booking&plugin_status=all&fluent-booking-check-update=' . time());
-                $notices[] = '<div class="error">' . esc_html__('FluentBookingPro plugin needs to be updated to the latest version.', 'fluent-booking') . ' <a href="' . esc_url($updateUrl) . '">' . esc_html__('Click here to update', 'fluent-booking') . '</a></div>';
+                $notices[] = '<div class="error">' . esc_html__('Bookings Pro plugin needs to be updated to the latest version.', 'fluent-booking') . ' <a href="' . esc_url($updateUrl) . '">' . esc_html__('Click here to update', 'fluent-booking') . '</a></div>';
                 return $notices;
             });
         }

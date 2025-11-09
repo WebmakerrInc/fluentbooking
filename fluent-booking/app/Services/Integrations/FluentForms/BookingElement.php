@@ -71,7 +71,7 @@ class BookingElement extends BaseFieldManager
                 ),
             ),
             'editor_options' => array(
-                'title'      => __('FluentBooking Field', 'fluent-booking'),
+                'title'      => __('Bookings Field', 'fluent-booking'),
                 'icon_class' => 'el-icon-date',
                 'template'   => 'inputCalendar'
             ),

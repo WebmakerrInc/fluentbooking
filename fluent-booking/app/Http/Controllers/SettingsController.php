@@ -226,7 +226,7 @@ class SettingsController extends Controller
     {
         if (!defined('FLUENT_BOOKING_PRO_DIR_FILE')) {
             return $this->sendError([
-                'message' => __('This feature is only available in FluentBooking Pro', 'fluent-booking')
+                'message' => __('This feature is only available in Bookings Pro', 'fluent-booking')
             ]);
         }
 
@@ -268,7 +268,7 @@ class SettingsController extends Controller
                 'file'      => 'fluent-smtp.php',
             ],
             'fluent-booking' => [
-                'name'      => 'FluentBooking',
+                'name'      => 'Bookings',
                 'repo-slug' => 'fluent-booking',
                 'file'      => 'fluent-booking.php',
             ],

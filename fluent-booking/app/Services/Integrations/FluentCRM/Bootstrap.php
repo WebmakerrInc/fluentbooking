@@ -27,7 +27,7 @@ class Bootstrap extends IntegrationManagerController
 
         $this->logo = FLUENTCRM_PLUGIN_URL . 'assets/images/fluentcrm-logo.svg';
 
-        $this->description = __('Connect FluentCRM with Fluent Booking and subscribe a contact when a booking is created.', 'fluent-booking');
+        $this->description = __('Connect FluentCRM with Bookings and subscribe a contact when a booking is created.', 'fluent-booking');
 
         $this->registerAdminHooks();
 
