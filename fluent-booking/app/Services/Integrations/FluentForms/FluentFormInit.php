@@ -352,9 +352,9 @@ class FluentFormInit
                     'source_id'        => $entry->id,
                     'component'        => 'FluentBooking',
                     'status'           => 'info',
-                    'title'            => __('Booking has been created on FluentBooking', 'fluent-booking'),
+                    'title'            => __('Booking has been created in Bookings', 'fluent-booking'),
                     /* translators: %1$s is the opening anchor tag, %2$s is the closing anchor tag. */
-                    'description'      => sprintf(__('A new appointment has been created on FluentBooking. %1$sView Booking Details%2$s', 'fluent-booking'), '<a rel="noopener" href="' . $booking->getAdminViewUrl() . '" target="_blank">', '</a>'),
+                    'description'      => sprintf(__('A new appointment has been created in Bookings. %1$sView Booking Details%2$s', 'fluent-booking'), '<a rel="noopener" href="' . $booking->getAdminViewUrl() . '" target="_blank">', '</a>'),
                 ]);
 
             } catch (\Exception $exception) {

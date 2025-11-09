@@ -64,7 +64,7 @@ class ElementorIntegration
     public function addElementorCategory()
     {
         \Elementor\Plugin::instance()->elements_manager->add_category('fluentbooking', [
-            'title' => __('FluentBooking', 'fluent-booking'),
+            'title' => __('Bookings', 'fluent-booking'),
         ], 1);
     }
 

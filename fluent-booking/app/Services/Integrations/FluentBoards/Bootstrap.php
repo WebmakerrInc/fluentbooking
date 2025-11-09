@@ -32,7 +32,7 @@ class Bootstrap extends IntegrationManagerController
 
         $this->logo = App::getInstance('url.assets') . 'images/fluentboards.png';
 
-        $this->description = __('Connect FluentBoards with Fluent Booking and create tasks with booking fields.', 'fluent-booking');
+        $this->description = __('Connect FluentBoards with Bookings and create tasks with booking fields.', 'fluent-booking');
 
         $this->registerAdminHooks();
     }

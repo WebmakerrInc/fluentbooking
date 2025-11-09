@@ -422,7 +422,7 @@ class BookingService
         // Initialize the ICS content
         $icsContent = "BEGIN:VCALENDAR\r\n";
         $icsContent .= "VERSION:2.0\r\n";
-        $icsContent .= "PRODID:-//Google Inc//Fluent Booking//EN\r\n";
+        $icsContent .= "PRODID:-//Google Inc//Bookings//EN\r\n";
         $icsContent .= "METHOD:REQUEST\r\n";
         $icsContent .= "STATUS:CONFIRMED\r\n";
 
