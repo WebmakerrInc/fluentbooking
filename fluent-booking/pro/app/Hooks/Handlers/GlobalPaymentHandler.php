@@ -81,7 +81,7 @@ class GlobalPaymentHandler
                 echo wp_kses_post($ret);
                 exit();
             }
-            wp_redirect(admin_url('admin.php?page=fluent-booking#/settings/payment-methods/stripe'));
+            wp_redirect(admin_url('admin.php?page=booking#/settings/payment-methods/stripe'));
         }
 
     }
