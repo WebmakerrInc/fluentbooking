@@ -341,7 +341,7 @@ class FcalCalendarEvent extends \Elementor\Widget_Base
         $hideHost = ($settings['show_host_info'] == 'yes') ? 'no' : 'yes';
 
         $shortcode = sprintf(
-            '[fluent_booking id="%s" theme="%s" disable_author="%s" hash="%s"]',
+            '[booking id="%s" theme="%s" disable_author="%s" hash="%s"]',
             $selectedEvent['id'],
             $settings['select_theme'],
             $hideHost,

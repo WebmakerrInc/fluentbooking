@@ -873,7 +873,7 @@ class Booking extends Model
     public function getConfirmationUrl()
     {
         return add_query_arg([
-            'fluent-booking' => 'booking',
+            'booking' => 'booking',
             'meeting_hash'   => $this->hash,
             'type'           => 'confirmation',
         ], Helper::getBookingReceiptLandingBaseUrl());
@@ -887,7 +887,7 @@ class Booking extends Model
     public function getIcsDownloadUrl()
     {
         return add_query_arg([
-            'fluent-booking' => 'booking',
+            'booking' => 'booking',
             'meeting_hash'   => $this->hash,
             'type'           => 'confirmation',
             'ics'            => 'download',
@@ -897,7 +897,7 @@ class Booking extends Model
     public function getRescheduleUrl()
     {
         return add_query_arg([
-            'fluent-booking' => 'booking',
+            'booking' => 'booking',
             'meeting_hash'   => $this->hash,
             'type'           => 'reschedule',
         ], Helper::getBookingReceiptLandingBaseUrl());
@@ -906,7 +906,7 @@ class Booking extends Model
     public function getCancelUrl()
     {
         return add_query_arg([
-            'fluent-booking' => 'booking',
+            'booking' => 'booking',
             'meeting_hash'   => $this->hash,
             'type'           => 'cancel',
         ], Helper::getBookingReceiptLandingBaseUrl());

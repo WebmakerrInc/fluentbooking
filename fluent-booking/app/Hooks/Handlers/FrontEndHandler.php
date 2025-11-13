@@ -23,6 +23,7 @@ class FrontEndHandler
 {
     public function register()
     {
+        add_shortcode('booking', [$this, 'handleBookingShortcode']);
         add_shortcode('fluent_booking', [$this, 'handleBookingShortcode']);
 
         add_shortcode('fluent_booking_team', [$this, 'handleTeamShortcode']);

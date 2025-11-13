@@ -64,7 +64,7 @@ class CalendarController extends Controller
                 if (!$hasPermission && !CalendarEventService::isSharedCalendarEvent($slot)) {
                     unset($calendar->slots[$key]);
                 }
-                $slot->shortcode = '[fluent_booking id="' . $slot->id . '"]';
+                $slot->shortcode = '[booking id="' . $slot->id . '"]';
                 $slot->public_url = $slot->getPublicUrl();
                 $slot->duration = $slot->getDefaultDuration();
                 $slot->price_total = $slot->getPricingTotal();

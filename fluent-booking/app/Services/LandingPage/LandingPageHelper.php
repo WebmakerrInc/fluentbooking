@@ -55,7 +55,7 @@ class LandingPageHelper
             return site_url(FLUENT_BOOKING_LANDING_SLUG . '/');
         }
 
-        return site_url('/?fluent-booking=calendar');
+        return site_url('/?booking=calendar');
     }
 
     public static function getPoweredByHtml()
