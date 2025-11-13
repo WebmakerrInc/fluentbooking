@@ -78,7 +78,7 @@ class ConnectConfig
 
         $settings = (new StripeSettings())->get();
 
-        $settings['provider'] = 'connect';
+        $settings['provider'] = 'api_keys';
 
         $settings['is_active'] = 'yes';
 

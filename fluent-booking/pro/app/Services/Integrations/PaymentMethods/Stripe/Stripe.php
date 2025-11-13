@@ -84,6 +84,8 @@ class Stripe extends BasePaymentMethod
             $data['live_secret_key'] = Helper::encryptKey($data['live_secret_key']);
         }
 
+        $data['provider'] = 'api_keys';
+
         return $data;
     }
 
@@ -444,19 +446,33 @@ class Stripe extends BasePaymentMethod
                 ],
                 'type'    => 'radio'
             ],
-//            'checkout_mode' => [
-//                'value' => 'onsite',
-//                'label' => __('Checkout Mode', 'fluent-booking'),
-//                'options' => [
-//                    'onsite' => __('Onsite', 'fluent-booking'),
-//                    'hosted' => __('Hosted', 'fluent-booking')
-//                ),
-//                'type' => 'radio'
-//            ),
-            'provider'     => [
-                'value' => 'connect',
-                'label' => __('Provider', 'fluent-booking-pro'),
-                'type'  => 'provider'
+            'test_publishable_key' => [
+                'value'       => '',
+                'label'       => __('Test Publishable Key', 'fluent-booking-pro'),
+                'type'        => 'input',
+                'placeholder' => __('pk_test_...', 'fluent-booking-pro'),
+                'inline_help' => __('Enter your Stripe test publishable key.', 'fluent-booking-pro')
+            ],
+            'test_secret_key'      => [
+                'value'       => '',
+                'label'       => __('Test Secret Key', 'fluent-booking-pro'),
+                'type'        => 'password',
+                'placeholder' => __('sk_test_...', 'fluent-booking-pro'),
+                'inline_help' => __('Enter your Stripe test secret key.', 'fluent-booking-pro')
+            ],
+            'live_publishable_key' => [
+                'value'       => '',
+                'label'       => __('Live Publishable Key', 'fluent-booking-pro'),
+                'type'        => 'input',
+                'placeholder' => __('pk_live_...', 'fluent-booking-pro'),
+                'inline_help' => __('Enter your Stripe live publishable key.', 'fluent-booking-pro')
+            ],
+            'live_secret_key'      => [
+                'value'       => '',
+                'label'       => __('Live Secret Key', 'fluent-booking-pro'),
+                'type'        => 'password',
+                'placeholder' => __('sk_live_...', 'fluent-booking-pro'),
+                'inline_help' => __('Enter your Stripe live secret key.', 'fluent-booking-pro')
             ],
             // 'currency'     => [
             //     'value'   => 'USD',
