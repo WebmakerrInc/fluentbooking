@@ -26,6 +26,7 @@ return array(
     'FluentBooking\\App\\Hooks\\Handlers\\IntegrationHandlers' => $baseDir . '/app/Hooks/Handlers/IntegrationHandlers.php',
     'FluentBooking\\App\\Hooks\\Handlers\\LogHandler' => $baseDir . '/app/Hooks/Handlers/LogHandler.php',
     'FluentBooking\\App\\Hooks\\Handlers\\NotificationHandler' => $baseDir . '/app/Hooks/Handlers/NotificationHandler.php',
+    'FluentBooking\\App\\Hooks\\Handlers\\SettingsAccessBlocker' => $baseDir . '/app/Hooks/Handlers/SettingsAccessBlocker.php',
     'FluentBooking\\App\\Hooks\\Handlers\\TimeSlotServiceHandler' => $baseDir . '/app/Hooks/Handlers/TimeSlotServiceHandler.php',
     'FluentBooking\\App\\Hooks\\Scheduler\\DailyScheduler' => $baseDir . '/app/Hooks/Scheduler/DailyScheduler.php',
     'FluentBooking\\App\\Hooks\\Scheduler\\FiveMinuteScheduler' => $baseDir . '/app/Hooks/Scheduler/FiveMinuteScheduler.php',

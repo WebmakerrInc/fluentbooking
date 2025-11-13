@@ -52,6 +52,7 @@ class ComposerStaticInit78e842760d4b2c304f7701ee34fd8f8e
         'FluentBooking\\App\\Hooks\\Handlers\\IntegrationHandlers' => __DIR__ . '/../..' . '/app/Hooks/Handlers/IntegrationHandlers.php',
         'FluentBooking\\App\\Hooks\\Handlers\\LogHandler' => __DIR__ . '/../..' . '/app/Hooks/Handlers/LogHandler.php',
         'FluentBooking\\App\\Hooks\\Handlers\\NotificationHandler' => __DIR__ . '/../..' . '/app/Hooks/Handlers/NotificationHandler.php',
+        'FluentBooking\\App\\Hooks\\Handlers\\SettingsAccessBlocker' => __DIR__ . '/../..' . '/app/Hooks/Handlers/SettingsAccessBlocker.php',
         'FluentBooking\\App\\Hooks\\Handlers\\TimeSlotServiceHandler' => __DIR__ . '/../..' . '/app/Hooks/Handlers/TimeSlotServiceHandler.php',
         'FluentBooking\\App\\Hooks\\Scheduler\\DailyScheduler' => __DIR__ . '/../..' . '/app/Hooks/Scheduler/DailyScheduler.php',
         'FluentBooking\\App\\Hooks\\Scheduler\\FiveMinuteScheduler' => __DIR__ . '/../..' . '/app/Hooks/Scheduler/FiveMinuteScheduler.php',
