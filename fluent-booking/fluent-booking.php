@@ -41,6 +41,8 @@ if (file_exists(FLUENT_BOOKING_PRO_DIR . 'vendor/autoload.php')) {
     require FLUENT_BOOKING_PRO_DIR . 'vendor/autoload.php';
 }
 
+require_once __DIR__ . '/functions.php';
+
 call_user_func(function ($bootstrap) {
     $bootstrap(__FILE__);
 }, require(__DIR__ . '/boot/app.php'));
