@@ -113,9 +113,10 @@ class LandingPageHandler
 
         $activeEvents = CalendarEventService::processEvents($calendar, $activeEvents);
 
-        $metaDescription = Helper::excerpt($calendar->description);
+        $calendarDescription = $calendar->description ?? '';
+        $metaDescription = Helper::excerpt($calendarDescription);
 
-        $calendar->description = wpautop($calendar->description);
+        $calendar->description = wpautop((string)$calendarDescription);
 
         $authorProfile = $calendar->getAuthorProfile(true);
 
