@@ -36,6 +36,7 @@ class Stripe extends BasePaymentMethod
         add_action('wp_ajax_nopriv_fluent_cal_confirm_stripe_payment', [$this, 'confirmStripePayment']);
         add_action('wp_ajax_fluent_cal_confirm_stripe_payment', [$this, 'confirmStripePayment']);
         add_filter('fluent_booking/payment/payment_settings_before_update_stripe', [$this, 'beforeUpdateSettings'], 10, 1);
+        add_action('admin_enqueue_scripts', [$this, 'enqueueAdminToggleScript'], 120);
     }
 
     public function disconnect($data)
@@ -87,6 +88,84 @@ class Stripe extends BasePaymentMethod
         $data['provider'] = 'api_keys';
 
         return $data;
+    }
+
+    public function enqueueAdminToggleScript()
+    {
+        if (!is_admin()) {
+            return;
+        }
+
+        if (!isset($_REQUEST['page']) || $_REQUEST['page'] !== 'booking') { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+            return;
+        }
+
+        $handle = 'fluent-booking_global_admin';
+
+        if (!wp_script_is($handle, 'enqueued')) {
+            return;
+        }
+
+        $script = <<<'JS'
+(function(){
+    var testClass = '.fbk-stripe-field--test';
+    var liveClass = '.fbk-stripe-field--live';
+
+    function toggleFields() {
+        var active = document.querySelector('input[name="payment_mode"]:checked');
+        var mode = active ? active.value : 'test';
+
+        document.querySelectorAll(testClass).forEach(function(field){
+            field.style.display = mode === 'test' ? '' : 'none';
+        });
+
+        document.querySelectorAll(liveClass).forEach(function(field){
+            field.style.display = mode === 'live' ? '' : 'none';
+        });
+    }
+
+    function bindListeners() {
+        var radios = document.querySelectorAll('input[name="payment_mode"]');
+        if (!radios.length) {
+            return false;
+        }
+
+        radios.forEach(function(input){
+            if (input.dataset.fbkStripeBound) {
+                return;
+            }
+
+            input.dataset.fbkStripeBound = '1';
+            input.addEventListener('change', toggleFields);
+        });
+
+        toggleFields();
+        return true;
+    }
+
+    function init() {
+        if (bindListeners()) {
+            return;
+        }
+
+        var observer = new MutationObserver(function(){
+            if (bindListeners()) {
+                observer.disconnect();
+            }
+        });
+
+        observer.observe(document.body, {childList: true, subtree: true});
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
+JS;
+
+        wp_add_inline_script($handle, $script);
     }
 
     public function getSettings()
@@ -304,7 +383,7 @@ class Stripe extends BasePaymentMethod
             'currency'             => $currency,
             'receipt_email'        => $booking->email,
             'description'          => $booking->getBookingTitle(),
-            'statement_descriptor' => StripeSettings::getPaymentDescriptor($booking->calendar_event),
+            'statement_descriptor_suffix' => StripeSettings::getPaymentDescriptor($booking->calendar_event),
             'metadata'             => [
                 'ref_id'      => $args['client_reference_id'],
                 'guest_name'  => trim($booking->first_name . ' ' . $booking->last_name),
@@ -447,32 +526,36 @@ class Stripe extends BasePaymentMethod
                 'type'    => 'radio'
             ],
             'test_publishable_key' => [
-                'value'       => '',
-                'label'       => __('Test Publishable Key', 'fluent-booking-pro'),
-                'type'        => 'input',
-                'placeholder' => __('pk_test_...', 'fluent-booking-pro'),
-                'inline_help' => __('Enter your Stripe test publishable key.', 'fluent-booking-pro')
+                'value'        => '',
+                'label'        => __('Test Publishable Key', 'fluent-booking-pro'),
+                'type'         => 'input',
+                'placeholder'  => __('pk_test_...', 'fluent-booking-pro'),
+                'inline_help'  => __('Enter your Stripe test publishable key.', 'fluent-booking-pro'),
+                'wrapper_class' => 'fbk-stripe-field fbk-stripe-field--test'
             ],
             'test_secret_key'      => [
-                'value'       => '',
-                'label'       => __('Test Secret Key', 'fluent-booking-pro'),
-                'type'        => 'password',
-                'placeholder' => __('sk_test_...', 'fluent-booking-pro'),
-                'inline_help' => __('Enter your Stripe test secret key.', 'fluent-booking-pro')
+                'value'        => '',
+                'label'        => __('Test Secret Key', 'fluent-booking-pro'),
+                'type'         => 'password',
+                'placeholder'  => __('sk_test_...', 'fluent-booking-pro'),
+                'inline_help'  => __('Enter your Stripe test secret key.', 'fluent-booking-pro'),
+                'wrapper_class' => 'fbk-stripe-field fbk-stripe-field--test'
             ],
             'live_publishable_key' => [
-                'value'       => '',
-                'label'       => __('Live Publishable Key', 'fluent-booking-pro'),
-                'type'        => 'input',
-                'placeholder' => __('pk_live_...', 'fluent-booking-pro'),
-                'inline_help' => __('Enter your Stripe live publishable key.', 'fluent-booking-pro')
+                'value'        => '',
+                'label'        => __('Live Publishable Key', 'fluent-booking-pro'),
+                'type'         => 'input',
+                'placeholder'  => __('pk_live_...', 'fluent-booking-pro'),
+                'inline_help'  => __('Enter your Stripe live publishable key.', 'fluent-booking-pro'),
+                'wrapper_class' => 'fbk-stripe-field fbk-stripe-field--live'
             ],
             'live_secret_key'      => [
-                'value'       => '',
-                'label'       => __('Live Secret Key', 'fluent-booking-pro'),
-                'type'        => 'password',
-                'placeholder' => __('sk_live_...', 'fluent-booking-pro'),
-                'inline_help' => __('Enter your Stripe live secret key.', 'fluent-booking-pro')
+                'value'        => '',
+                'label'        => __('Live Secret Key', 'fluent-booking-pro'),
+                'type'         => 'password',
+                'placeholder'  => __('sk_live_...', 'fluent-booking-pro'),
+                'inline_help'  => __('Enter your Stripe live secret key.', 'fluent-booking-pro'),
+                'wrapper_class' => 'fbk-stripe-field fbk-stripe-field--live'
             ],
             // 'currency'     => [
             //     'value'   => 'USD',
