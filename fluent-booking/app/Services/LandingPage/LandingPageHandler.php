@@ -166,6 +166,10 @@ class LandingPageHandler
             ]
         ];
 
+        $data['header_js_files'] = array_merge([
+            'fluent-booking-geo-detect-js' => $assetUrl . 'public/js/geo-detect.js'
+        ], $data['header_js_files']);
+
         if ($extraJsFiles) {
             $extraJsFiles = array_unique($extraJsFiles);
             $data['js_files'] = array_merge($data['js_files'], $extraJsFiles);
@@ -220,6 +224,11 @@ class LandingPageHandler
 
         $eventVars = (new FrontEndHandler())->getCalendarEventVars($calendar, $calendarEvent);
 
+        $globalVars = (new FrontEndHandler())->getGlobalVars();
+        $globalVars['is_landing_page'] = true;
+        $globalVars['is_pretty_url'] = defined('FLUENT_BOOKING_LANDING_SLUG');
+        $globalVars['base_url'] = home_url($wp->request);
+
         $isRtl = Helper::fluentbooking_is_rtl();
 
         $publicCss = $isRtl ? 'public/saas-rtl.css' : 'public/saas.css';
@@ -239,10 +248,11 @@ class LandingPageHandler
                 $assetUrl . $publicCss
             ],
             'js_files'       => [
+                'fluent-booking-geo-detect-js' => $assetUrl . 'public/js/geo-detect.js',
                 'fluent-booking-public-js' => $assetUrl . 'public/js/app.js',
             ],
             'js_vars'        => [
-                'fluentCalendarPublicVars'                                     => (new FrontEndHandler())->getGlobalVars(),
+                'fluentCalendarPublicVars'                                     => $globalVars,
                 'fcal_public_vars_' . $calendar->id . '_' . $calendarEvent->id => $eventVars,
             ]
         ];
@@ -250,7 +260,7 @@ class LandingPageHandler
         $extraJs = $this->getEventLandingExtraJsFiles($eventVars['form_fields'], $calendarEvent);
 
         if ($extraJs) {
-            $data['js_files'] = wp_parse_args($data['js_files'], $extraJs);
+            $data['js_files'] = array_merge($data['js_files'], $extraJs);
             add_action('fluent_booking/author_landing_head', function () use ($assetUrl) {
                 ?>
                 <style>
