@@ -17,12 +17,12 @@ class StripeSettings
         $settings = get_option($this->methodHandler, []);
 
         if (!$settings) {
-            $settings['provider'] = 'connect';
+            $settings['provider'] = 'api_keys';
         }
 
         $settings = wp_parse_args($settings, static::getDefaults());
 
-        if ($settings['provider'] == 'connect' && apply_filters('fluent_booking_form_disable_stripe_connect', false)) {
+        if ($settings['provider'] !== 'api_keys') {
             $settings['provider'] = 'api_keys';
         }
 
