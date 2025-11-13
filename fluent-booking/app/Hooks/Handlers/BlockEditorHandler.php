@@ -365,7 +365,7 @@ class BlockEditorHandler
 
         $output .= '<div class="fluent-booking-calendar-block align' . Arr::get($attributes, 'align') . '">';
 
-        $output .= do_shortcode("[fluent_booking id=$slotId disable_author=$disableHost theme=$theme hash=$eventHash]");
+        $output .= do_shortcode("[booking id=$slotId disable_author=$disableHost theme=$theme hash=$eventHash]");
 
         $output .= '</div>';
         return $output;

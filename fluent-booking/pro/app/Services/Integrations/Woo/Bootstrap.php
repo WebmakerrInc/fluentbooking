@@ -60,7 +60,7 @@ class Bootstrap
                 ]);
 
                 $redirect = add_query_arg([
-                    'fluent-booking' => 'woo-checkout',
+                    'booking' => 'woo-checkout',
                     'fcal_hash'      => $booking->hash
                 ], wc_get_checkout_url());
 
