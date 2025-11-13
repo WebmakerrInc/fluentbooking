@@ -53,7 +53,7 @@ abstract class IntegrationManagerController extends IntegrationManagerHelper
                 'category'                => $this->category,
                 'disable_global_settings' => $this->disableGlobalSettings,
                 'description'             => $this->description,
-                'config_url'              => ('yes' != $this->disableGlobalSettings) ? admin_url('admin.php?page=fluent-booking#/settings/general-settings') : '',
+                'config_url'              => ('yes' != $this->disableGlobalSettings) ? admin_url('admin.php?page=booking#/settings/general-settings') : '',
                 'logo'                    => $this->logo,
                 'enabled'                 => ($isEnabled) ? 'yes' : 'no',
             ];

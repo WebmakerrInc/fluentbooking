@@ -121,7 +121,7 @@ class Bootstrap extends BaseCalendar
             'btn_text'             => sprintf(__('Connect with %s', 'fluent-booking-pro'), $this->calendarTitle),
             'auth_url'             => $this->getAuthUrl($userId),
             'is_global_configured' => $this->isConfigured(),
-            'global_config_url'    => admin_url('admin.php?page=fluent-booking#/settings/configure-integrations/' . $this->calendarKey),
+            'global_config_url'    => admin_url('admin.php?page=booking#/settings/configure-integrations/' . $this->calendarKey),
         ];
 
         return $providers;

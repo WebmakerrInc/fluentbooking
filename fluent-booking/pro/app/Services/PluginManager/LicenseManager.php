@@ -12,7 +12,7 @@ class LicenseManager
     {
         $this->pluginBaseName = 'fluent-booking/fluent-booking.php';
 
-        $urlBase = apply_filters('fluent_booking_pro/menu_url_base', admin_url('admin.php?page=fluent-booking#/'));
+        $urlBase = apply_filters('fluent_booking_pro/menu_url_base', admin_url('admin.php?page=booking#/'));
 
         $this->settings = [
             'item_id'        => 7067651,

@@ -17,7 +17,7 @@ class AdminMenuHandler
         add_action('admin_menu', [$this, 'add']);
 
         add_action('admin_enqueue_scripts', function () {
-            if (!isset($_REQUEST['page']) || $_REQUEST['page'] != 'fluent-booking') { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+            if (!isset($_REQUEST['page']) || $_REQUEST['page'] != 'booking') { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
                 return;
             }
             $this->enqueueAssets();
@@ -37,54 +37,54 @@ class AdminMenuHandler
             __('Bookings', 'fluent-booking'),
             __('Bookings', 'fluent-booking'),
             $capability,
-            'fluent-booking',
+            'booking',
             [$this, 'render'],
             $this->getMenuIcon(),
             $menuPriority
         );
 
         add_submenu_page(
-            'fluent-booking',
+            'booking',
             __('Dashboard', 'fluent-booking'),
             __('Dashboard', 'fluent-booking'),
             $capability,
-            'fluent-booking',
+            'booking',
             [$this, 'render']
         );
 
         add_submenu_page(
-            'fluent-booking',
+            'booking',
             __('Calendars', 'fluent-booking'),
             __('Calendars', 'fluent-booking'),
             $capability,
-            'fluent-booking#/calendars',
+            'booking#/calendars',
             [$this, 'render']
         );
 
         add_submenu_page(
-            'fluent-booking',
+            'booking',
             __('Bookings', 'fluent-booking'),
             __('Bookings', 'fluent-booking'),
             $capability,
-            'fluent-booking#/scheduled-events',
+            'booking#/scheduled-events',
             [$this, 'render']
         );
 
         add_submenu_page(
-            'fluent-booking',
+            'booking',
             __('Availability', 'fluent-booking'),
             __('Availability', 'fluent-booking'),
             $capability,
-            'fluent-booking#/availability',
+            'booking#/availability',
             [$this, 'render']
         );
 
         add_submenu_page(
-            'fluent-booking',
+            'booking',
             __('Settings', 'fluent-booking'),
             __('Settings', 'fluent-booking'),
             'manage_options',
-            'fluent-booking#/settings/general-settings',
+            'booking#/settings/general-settings',
             [$this, 'render']
         );
     }
@@ -108,7 +108,7 @@ class AdminMenuHandler
         $baseUrl = Helper::getAppBaseUrl();
 
         if (is_admin()) {
-            $baseUrl = admin_url('admin.php?page=fluent-booking#/');
+            $baseUrl = admin_url('admin.php?page=booking#/');
         }
 
         $isNew = $this->isNew();

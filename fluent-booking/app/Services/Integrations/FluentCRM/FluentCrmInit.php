@@ -75,7 +75,7 @@ class FluentCrmInit
 
     private function getActionUrl($meeting)
     {
-        $url = admin_url('admin.php?page=fluent-booking#/scheduled-events?booking_id=' . $meeting->id);
+        $url = admin_url('admin.php?page=booking#/scheduled-events?booking_id=' . $meeting->id);
 
         $link = '<a target="_blank" href="' . esc_url($url) . '">' . 'view' . '</a>';
         

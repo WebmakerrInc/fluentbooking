@@ -686,7 +686,7 @@ class Helper
 
     public static function getAppBaseUrl($extension = '')
     {
-        return apply_filters('fluent_booking/admin_base_url', admin_url('admin.php?page=fluent-booking#/' . $extension), $extension);
+        return apply_filters('fluent_booking/admin_base_url', admin_url('admin.php?page=booking#/' . $extension), $extension);
     }
 
     public static function getAdminBookingUrl($bookingId)
