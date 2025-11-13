@@ -574,7 +574,7 @@ class FrontEndHandler
                 $currentPerson['name'] = $name;
             }
 
-            if ($email = sanitize_email(Arr::get($request, 'invitee_email'))) {
+            if ($email = sanitize_email(Arr::get($request, 'invitee_email', ''))) {
                 if (is_email($email)) {
                     $currentPerson['email'] = $email;
                 }
