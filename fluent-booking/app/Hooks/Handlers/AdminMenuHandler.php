@@ -289,6 +289,12 @@ class AdminMenuHandler
         }, 999999);
 
         wp_enqueue_style('fluent_booing_admin_app', $assets . $adminAppCss, [], FLUENT_BOOKING_ASSETS_VERSION, 'all');
+        wp_enqueue_style(
+            'fluent_booking_admin_enhancements',
+            $assets . 'admin/admin-enhancements.css',
+            ['fluent_booing_admin_app'],
+            FLUENT_BOOKING_ASSETS_VERSION
+        );
 
         do_action($slug . '_loading_app');
 
