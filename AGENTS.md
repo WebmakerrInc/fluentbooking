@@ -6,7 +6,6 @@ Codex must safely enhance the UI of WordPress admin plugins without breaking fun
 ## Rules
 
 ### 1. Never modify:
-- Plugin slugs or routes (e.g., `page=fluent-support`, `page=fluent-mail`)
 - Compiled JS bundles (`app.js`, `vendor.js`, `runtime.js`)
 - Vue component markup or structure
 - Core spacing, flexbox, grid, or wrapper layouts
