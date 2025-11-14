@@ -3,11 +3,15 @@
     color: #0f172a;
     background-color: #f6f7f9;
     line-height: 1.55;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 #fluent-booking-app .fframe_app,
 #fluent_booking_app .fframe_app {
     background: transparent;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 #fluent-booking-app .fframe_main-menu-items,
@@ -51,6 +55,8 @@
 #fluent-booking-app .fframe_body,
 #fluent_booking_app .fframe_body {
     background: #f6f7f9;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 #fluent-booking-app .el-card,
@@ -59,6 +65,8 @@
     border: 1px solid #e5e5e5;
     border-radius: 6px;
     box-shadow: 0 10px 30px -18px rgba(15, 23, 42, 0.35);
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 #fluent-booking-app .el-card__header,
@@ -73,6 +81,8 @@
 #fluent-booking-app .el-card__body,
 #fluent_booking_app .el-card__body {
     padding: 22px 24px;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 #fluent-booking-app .el-table,
@@ -80,6 +90,14 @@
     background: #ffffff;
     border-radius: 6px;
     border: 1px solid #e5e5e5;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+#fluent-booking-app .el-table__body-wrapper,
+#fluent_booking_app .el-table__body-wrapper {
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 #fluent-booking-app .el-table th,
@@ -109,6 +127,7 @@
     background: #ffffff;
     box-shadow: none;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    padding: 11px 14px;
 }
 
 #fluent-booking-app .el-input__inner:focus,
@@ -508,3 +527,32 @@
     color: #0f172a;
     font-weight: 500;
 }
+#fluent-booking-app .el-form-item,
+#fluent_booking_app .el-form-item {
+    margin-bottom: 20px;
+}
+
+#fluent-booking-app .el-form-item__label,
+#fluent_booking_app .el-form-item__label {
+    padding-bottom: 8px;
+    line-height: 1.4;
+}
+
+#fluent-booking-app .el-form-item__content,
+#fluent_booking_app .el-form-item__content {
+    line-height: 1.6;
+    max-width: 100%;
+}
+
+#fluent-booking-app .el-input-group__prepend,
+#fluent_booking_app .el-input-group__prepend,
+#fluent-booking-app .el-input-group__append,
+#fluent_booking_app .el-input-group__append {
+    padding: 11px 14px;
+}
+
+#fluent-booking-app .el-textarea__inner,
+#fluent_booking_app .el-textarea__inner {
+    min-height: 120px;
+}
+
