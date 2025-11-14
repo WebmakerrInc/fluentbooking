@@ -40,15 +40,15 @@ return function ($file) {
 
     $activationFile = defined('FLUENT_BOOKING_DIR_FILE') ? FLUENT_BOOKING_DIR_FILE : $file;
 
-    register_activation_hook($activationFile, function () use ($file) {
+    register_activation_hook($activationFile, function ($network_wide = false) use ($file) {
 
         if (defined('FLUENT_BOOKING_DIR')) {
             // Temp Free version Migrator
-            (new \FluentBooking\App\Hooks\Handlers\ActivationHandler(\FluentBooking\App\App::getInstance()))->handle();
+            (new \FluentBooking\App\Hooks\Handlers\ActivationHandler(\FluentBooking\App\App::getInstance()))->handle($network_wide);
         }
 
         update_option('fluent_booking_pro_db_version', FLUENT_BOOKING_PRO_DB_VERSION, 'no');
-        DBMigrator::run();
+        DBMigrator::run($network_wide);
     });
 
     if (!defined('FLUENT_BOOKING_DIR')) {

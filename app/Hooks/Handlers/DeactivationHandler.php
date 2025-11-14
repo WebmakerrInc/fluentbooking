@@ -13,7 +13,7 @@ class DeactivationHandler
         $this->app = $app;
     }
 
-    public function handle()
+    public function handle($network_wide = false)
     {
         if(function_exists('\as_unschedule_all_actions')) {
             \as_unschedule_all_actions('fluent_booking_five_minutes_tasks');

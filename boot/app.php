@@ -11,12 +11,12 @@ return function ($file) {
 
     $app = new Application($file);
 
-    register_activation_hook($file, function () use ($app) {
-        ($app->make(ActivationHandler::class))->handle();
+    register_activation_hook($file, function ($network_wide = false) use ($app) {
+        ($app->make(ActivationHandler::class))->handle($network_wide);
     });
 
-    register_deactivation_hook($file, function () use ($app) {
-        ($app->make(DeactivationHandler::class))->handle();
+    register_deactivation_hook($file, function ($network_wide = false) use ($app) {
+        ($app->make(DeactivationHandler::class))->handle($network_wide);
     });
 
     require_once(FLUENT_BOOKING_DIR . 'boot/action_scheduler_loader.php');
