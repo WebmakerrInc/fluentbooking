@@ -1,0 +1,429 @@
+#fluent-booking-app {
+    --fb-surface: #ffffff;
+    --fb-surface-muted: #f7f8fa;
+    --fb-border-subtle: #e5e5e5;
+    --fb-border-strong: #d0d5dd;
+    --fb-text-primary: #0f172a;
+    --fb-text-secondary: #475467;
+    --fb-text-muted: #6b7280;
+    --fb-primary: #000000;
+    --fb-primary-contrast: #ffffff;
+    font-family: "Inter", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--fb-text-primary);
+    background-color: var(--fb-surface-muted);
+    line-height: 1.5;
+}
+
+#fluent-booking-app .fframe_app {
+    background: transparent;
+}
+
+#fluent-booking-app .fframe_main-menu-items {
+    background: var(--fb-surface);
+    border-bottom: 1px solid var(--fb-border-subtle);
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.06);
+    padding: 16px 24px;
+    border-radius: 14px;
+    margin: 24px 24px 0;
+}
+
+#fluent-booking-app .fframe_main-menu-items .menu_logo_holder img {
+    max-height: 40px;
+    filter: drop-shadow(0 2px 6px rgba(15, 23, 42, 0.12));
+}
+
+#fluent-booking-app .fframe_main-menu-items .fframe_menu,
+#fluent-booking-app .fframe_main-menu-items .fcal_secondary_menu {
+    gap: 6px;
+}
+
+#fluent-booking-app .fframe_menu_item {
+    border-radius: 8px;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#fluent-booking-app .fframe_menu_primary {
+    color: var(--fb-text-secondary);
+    font-weight: 500;
+    padding: 10px 14px;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#fluent-booking-app .fframe_menu_primary:hover,
+#fluent-booking-app .fframe_menu_item:hover > .fframe_menu_primary {
+    background: var(--fb-surface-muted);
+    color: var(--fb-text-primary);
+}
+
+#fluent-booking-app .fframe_menu_item.is_active > .fframe_menu_primary,
+#fluent-booking-app .fframe_menu_item.active > .fframe_menu_primary,
+#fluent-booking-app .fframe_menu_item.current > .fframe_menu_primary,
+#fluent-booking-app .fframe_menu_item .fframe_menu_primary.is-active,
+#fluent-booking-app .fframe_menu_item .fframe_menu_primary.router-link-active,
+#fluent-booking-app .fframe_menu_item[aria-current="page"] > .fframe_menu_primary {
+    background: var(--fb-primary);
+    color: var(--fb-primary-contrast);
+    box-shadow: 0 10px 18px rgba(15, 23, 42, 0.18);
+}
+
+#fluent-booking-app .fframe_submenu_items {
+    background: var(--fb-surface);
+    border: 1px solid var(--fb-border-subtle);
+    border-radius: 10px;
+    box-shadow: 0 16px 36px rgba(15, 23, 42, 0.1);
+    padding: 8px;
+}
+
+#fluent-booking-app .fframe_submenu_items a {
+    color: var(--fb-text-secondary);
+    border-radius: 6px;
+    padding: 8px 12px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#fluent-booking-app .fframe_submenu_items a:hover {
+    background: var(--fb-surface-muted);
+    color: var(--fb-text-primary);
+}
+
+#fluent-booking-app .fframe_body {
+    background: transparent;
+    padding: 24px;
+}
+
+#fluent-booking-app .fframe_body .fs_route_wrapper {
+    background: var(--fb-surface);
+    border: 1px solid var(--fb-border-subtle);
+    border-radius: 18px;
+    padding: 32px;
+    box-shadow: 0 32px 70px rgba(15, 23, 42, 0.08);
+}
+
+#fluent-booking-app .fframe_body .fs_route_wrapper > *:first-child {
+    margin-top: 0;
+}
+
+#fluent-booking-app h1,
+#fluent-booking-app h2,
+#fluent-booking-app h3,
+#fluent-booking-app h4,
+#fluent-booking-app h5,
+#fluent-booking-app h6 {
+    color: var(--fb-text-primary);
+    font-weight: 600;
+    line-height: 1.35;
+    margin-bottom: 16px;
+}
+
+#fluent-booking-app p,
+#fluent-booking-app span,
+#fluent-booking-app li {
+    color: var(--fb-text-secondary);
+    line-height: 1.6;
+}
+
+#fluent-booking-app a {
+    color: #0b5fff;
+    transition: color 0.2s ease;
+}
+
+#fluent-booking-app a:hover,
+#fluent-booking-app a:focus {
+    color: #063cc1;
+}
+
+#fluent-booking-app button,
+#fluent-booking-app .button,
+#fluent-booking-app .el-button,
+#fluent-booking-app .components-button {
+    border-radius: 4px;
+    font-weight: 500;
+    box-shadow: none;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#fluent-booking-app .button-primary,
+#fluent-booking-app .el-button--primary,
+#fluent-booking-app .el-button.is-primary,
+#fluent-booking-app .components-button.is-primary {
+    background-color: var(--fb-primary);
+    border-color: var(--fb-primary);
+    color: var(--fb-primary-contrast);
+}
+
+#fluent-booking-app .button-primary:hover,
+#fluent-booking-app .el-button--primary:hover,
+#fluent-booking-app .el-button.is-primary:hover,
+#fluent-booking-app .components-button.is-primary:hover {
+    background-color: rgba(0, 0, 0, 0.88);
+    border-color: rgba(0, 0, 0, 0.88);
+}
+
+#fluent-booking-app .el-button--default,
+#fluent-booking-app .el-button:not(.el-button--primary):not(.el-button--success):not(.el-button--danger):not(.el-button--warning):not(.el-button--info):not(.el-button--text),
+#fluent-booking-app .button:not(.button-primary):not(.is-primary):not(.button-link),
+#fluent-booking-app .components-button.is-secondary,
+#fluent-booking-app .components-button:not(.is-primary):not(.is-link):not(.has-icon) {
+    background-color: var(--fb-surface);
+    border-color: var(--fb-border-strong);
+    color: var(--fb-text-secondary);
+}
+
+#fluent-booking-app .el-button--default:hover,
+#fluent-booking-app .el-button:not(.el-button--primary):not(.el-button--success):not(.el-button--danger):not(.el-button--warning):not(.el-button--info):not(.el-button--text):hover,
+#fluent-booking-app .button:not(.button-primary):not(.is-primary):not(.button-link):hover,
+#fluent-booking-app .components-button.is-secondary:hover,
+#fluent-booking-app .components-button:not(.is-primary):not(.is-link):not(.has-icon):hover {
+    background-color: var(--fb-surface-muted);
+    color: var(--fb-text-primary);
+}
+
+#fluent-booking-app .el-button--text,
+#fluent-booking-app .components-button.is-link {
+    border-color: transparent;
+    background: transparent;
+    color: #0b5fff;
+}
+
+#fluent-booking-app .el-button--text:hover,
+#fluent-booking-app .components-button.is-link:hover {
+    color: #063cc1;
+    background: rgba(6, 60, 193, 0.08);
+}
+
+#fluent-booking-app input[type="text"],
+#fluent-booking-app input[type="email"],
+#fluent-booking-app input[type="number"],
+#fluent-booking-app input[type="search"],
+#fluent-booking-app input[type="tel"],
+#fluent-booking-app input[type="url"],
+#fluent-booking-app input[type="password"],
+#fluent-booking-app select,
+#fluent-booking-app textarea,
+#fluent-booking-app .el-input__inner,
+#fluent-booking-app .el-textarea__inner {
+    background: var(--fb-surface);
+    border: 1px solid #d8d8d8;
+    border-radius: 4px;
+    box-shadow: none;
+    color: var(--fb-text-secondary);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#fluent-booking-app input[type="text"]:focus,
+#fluent-booking-app input[type="email"]:focus,
+#fluent-booking-app input[type="number"]:focus,
+#fluent-booking-app input[type="search"]:focus,
+#fluent-booking-app input[type="tel"]:focus,
+#fluent-booking-app input[type="url"]:focus,
+#fluent-booking-app input[type="password"]:focus,
+#fluent-booking-app select:focus,
+#fluent-booking-app textarea:focus,
+#fluent-booking-app .el-input__inner:focus,
+#fluent-booking-app .el-textarea__inner:focus,
+#fluent-booking-app .el-select .el-input.is-focus .el-input__inner {
+    border-color: var(--fb-primary);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
+    outline: none;
+    color: var(--fb-text-primary);
+}
+
+#fluent-booking-app label,
+#fluent-booking-app .el-form-item__label {
+    color: var(--fb-text-secondary);
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+#fluent-booking-app .el-card,
+#fluent-booking-app .fcal_card,
+#fluent-booking-app .fframe_card,
+#fluent-booking-app .settings_card,
+#fluent-booking-app .fb-card,
+#fluent-booking-app .fcal_panel {
+    background: var(--fb-surface);
+    border: 1px solid var(--fb-border-subtle);
+    border-radius: 16px;
+    box-shadow: 0 24px 50px rgba(15, 23, 42, 0.06);
+    padding: 24px;
+}
+
+#fluent-booking-app .el-card__header,
+#fluent-booking-app .el-card__body {
+    padding: 20px 24px;
+}
+
+#fluent-booking-app .el-tabs__header {
+    border-bottom: 1px solid var(--fb-border-subtle);
+    margin-bottom: 24px;
+}
+
+#fluent-booking-app .el-tabs__item {
+    color: var(--fb-text-secondary);
+    padding: 12px 18px;
+    border-radius: 8px 8px 0 0;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#fluent-booking-app .el-tabs__item.is-active {
+    background: var(--fb-surface);
+    color: var(--fb-text-primary);
+    font-weight: 600;
+}
+
+#fluent-booking-app .el-tabs__item:hover {
+    background: var(--fb-surface-muted);
+    color: var(--fb-text-primary);
+}
+
+#fluent-booking-app .el-table {
+    background: var(--fb-surface);
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--fb-border-subtle);
+}
+
+#fluent-booking-app .el-table th {
+    background: #f8f8f8;
+    color: var(--fb-text-secondary);
+    font-weight: 600;
+    padding: 14px 16px;
+}
+
+#fluent-booking-app .el-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--fb-border-subtle);
+    color: var(--fb-text-secondary);
+}
+
+#fluent-booking-app .el-table tr:last-child td {
+    border-bottom: none;
+}
+
+#fluent-booking-app .el-table__body tr:hover > td {
+    background: #f9fafb;
+}
+
+#fluent-booking-app .el-alert {
+    border-radius: 10px;
+    border: 1px solid var(--fb-border-subtle);
+    box-shadow: 0 16px 32px rgba(15, 23, 42, 0.08);
+}
+
+#fluent-booking-app .el-notification {
+    border-radius: 14px;
+    box-shadow: 0 30px 60px rgba(15, 23, 42, 0.15);
+}
+
+#fluent-booking-app .el-dialog {
+    border-radius: 16px;
+    box-shadow: 0 35px 80px rgba(15, 23, 42, 0.2);
+}
+
+#fluent-booking-app .el-dialog__header {
+    border-bottom: 1px solid var(--fb-border-subtle);
+    padding: 18px 28px 16px;
+}
+
+#fluent-booking-app .el-dialog__title {
+    font-weight: 600;
+    color: var(--fb-text-primary);
+}
+
+#fluent-booking-app .el-dialog__body {
+    padding: 24px 28px;
+}
+
+#fluent-booking-app .el-dialog__footer {
+    border-top: 1px solid var(--fb-border-subtle);
+    padding: 18px 28px;
+}
+
+#fluent-booking-app .el-tag {
+    border-radius: 999px;
+    border: 1px solid var(--fb-border-strong);
+    background: var(--fb-surface-muted);
+    color: var(--fb-text-secondary);
+    font-weight: 500;
+    padding: 4px 10px;
+}
+
+#fluent-booking-app .el-pagination {
+    padding: 20px 0;
+}
+
+#fluent-booking-app .el-pagination button,
+#fluent-booking-app .el-pagination .el-pager li {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    color: var(--fb-text-secondary);
+}
+
+#fluent-booking-app .el-pagination .el-pager li.active,
+#fluent-booking-app .el-pagination .el-pager li:hover {
+    border-color: var(--fb-primary);
+    color: var(--fb-primary);
+}
+
+#fluent-booking-app .notice,
+#fluent-booking-app .fcal_notice,
+#fluent-booking-app .fcal_badge,
+#fluent-booking-app .badge,
+#fluent-booking-app .status_badge {
+    border-radius: 10px;
+    border: 1px solid var(--fb-border-subtle);
+    background: var(--fb-surface);
+    color: var(--fb-text-secondary);
+    font-weight: 500;
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+}
+
+#fluent-booking-app .el-loading-spinner .path {
+    stroke: var(--fb-primary);
+}
+
+#fluent-booking-app .el-loading-spinner .el-loading-text {
+    color: var(--fb-text-secondary);
+}
+
+@media (max-width: 1024px) {
+    #fluent-booking-app .fframe_main-menu-items {
+        margin: 16px;
+        padding: 14px 18px;
+        border-radius: 12px;
+    }
+
+    #fluent-booking-app .fframe_body {
+        padding: 18px;
+    }
+
+    #fluent-booking-app .fframe_body .fs_route_wrapper {
+        padding: 24px;
+        border-radius: 14px;
+    }
+}
+
+@media (max-width: 600px) {
+    #fluent-booking-app {
+        background-color: #ffffff;
+    }
+
+    #fluent-booking-app .fframe_main-menu-items {
+        margin: 12px;
+        padding: 12px;
+        box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+    }
+
+    #fluent-booking-app .fframe_body {
+        padding: 12px;
+    }
+
+    #fluent-booking-app .fframe_body .fs_route_wrapper {
+        padding: 20px;
+    }
+
+    #fluent-booking-app .fframe_menu_primary {
+        padding: 8px 10px;
+    }
+}
