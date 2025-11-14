@@ -24,6 +24,7 @@ defined('ABSPATH') || exit;
 (new \FluentBooking\App\Hooks\Handlers\NotificationHandler())->register();
 (new \FluentBooking\App\Hooks\Handlers\LogHandler())->register();
 (new \FluentBooking\App\Hooks\Handlers\AdminMenuHandler())->register();
+(new \FluentBooking\App\Hooks\Handlers\AdminAppearanceHandler())->register();
 (new \FluentBooking\App\Hooks\Handlers\SettingsAccessBlocker())->register();
 (new \FluentBooking\App\Hooks\Scheduler\FiveMinuteScheduler())->register();
 (new \FluentBooking\App\Hooks\Scheduler\DailyScheduler())->register();
