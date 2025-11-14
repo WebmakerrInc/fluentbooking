@@ -92,12 +92,24 @@
     border: 1px solid #e5e5e5;
     max-width: 100%;
     overflow-x: hidden;
+    width: 100%;
+    table-layout: fixed !important;
 }
 
+#fluent-booking-app .el-table__header,
+#fluent_booking_app .el-table__header,
+#fluent-booking-app .el-table__body,
+#fluent_booking_app .el-table__body {
+    width: 100% !important;
+}
+
+#fluent-booking-app .el-table__header-wrapper,
+#fluent_booking_app .el-table__header-wrapper,
 #fluent-booking-app .el-table__body-wrapper,
 #fluent_booking_app .el-table__body-wrapper {
     max-width: 100%;
-    overflow-x: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 
 #fluent-booking-app .el-table th,
