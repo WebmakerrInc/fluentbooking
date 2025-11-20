@@ -133,12 +133,15 @@ class Updater
 
         $version_info = $this->get_transient($this->response_transient_key);
 
+        $version_info = $this->prepare_version_info($version_info);
+
         if (false === $version_info) {
             $version_info = $this->api_request('plugin_latest_version', array('slug' => $this->slug));
             if (is_wp_error($version_info)) {
                 $version_info = new \stdClass();
                 $version_info->error = true;
             }
+            $version_info = $this->prepare_version_info($version_info);
             $this->set_transient($this->response_transient_key, $version_info);
         }
 
@@ -416,6 +419,23 @@ class Updater
         ];
 
         update_option($cache_key, $data, 'no');
+    }
+
+    private function prepare_version_info($version_info)
+    {
+        if (!is_object($version_info)) {
+            return $version_info;
+        }
+
+        if (empty($version_info->plugin)) {
+            $version_info->plugin = $this->name;
+        }
+
+        if (empty($version_info->slug)) {
+            $version_info->slug = $this->slug;
+        }
+
+        return $version_info;
     }
 
 }
