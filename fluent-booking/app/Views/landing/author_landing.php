@@ -123,8 +123,13 @@
     <?php endforeach; ?>
 
     <?php do_action('fluent_booking/main_landing'); ?>
+
+    <?php wp_head(); ?>
 </head>
 <body>
+    <?php if (function_exists('wp_body_open')) {
+        wp_body_open();
+    } ?>
     <div class="fcal_landing_center">
         <?php \FluentBooking\App\App::getInstance('view')->render('landing.author_html', [
             'author' => $author,
@@ -147,5 +152,7 @@
     <?php endforeach; ?>
 
     <?php do_action('fluent_booking/main_landing_footer'); ?>
+
+    <?php wp_footer(); ?>
 </body>
 </html>

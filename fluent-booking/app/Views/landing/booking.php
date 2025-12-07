@@ -47,6 +47,8 @@ use FluentBooking\App\Models\Booking;
               media="all"/>
     <?php endforeach; ?>
 
+    <?php wp_head(); ?>
+
     <style>
         :root {
             --fcal_primaryColor: #000;
@@ -64,6 +66,9 @@ use FluentBooking\App\Models\Booking;
 
 </head>
 <body>
+    <?php if (function_exists('wp_body_open')) {
+        wp_body_open();
+    } ?>
 
     <div class="calendar_wrap">
         <?php do_action('fluent_booking/before_calendar_event_landing_page', $calendar_event); ?>
@@ -88,5 +93,7 @@ use FluentBooking\App\Models\Booking;
     <?php endforeach; ?>
 
     <?php do_action('fluent_booking/author_landing_footer', $calendar_event); ?>
+
+    <?php wp_footer(); ?>
 </body>
 </html>
