@@ -23,7 +23,7 @@ class LandingPageHandler
         }
 
         if (isset($_GET['booking'])) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-            add_action('init', [$this, 'handleUrlParamsPage'], 100);
+            add_action('template_redirect', [$this, 'handleUrlParamsPage'], 1);
         }
     }
 
