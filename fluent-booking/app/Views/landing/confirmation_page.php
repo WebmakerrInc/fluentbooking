@@ -22,8 +22,14 @@
     <?php foreach ($css_files as $css_file): ?>
         <link rel="stylesheet" href="<?php echo esc_url($css_file); ?>?version=<?php echo esc_attr(FLUENT_BOOKING_ASSETS_VERSION); ?>" media="all" />
     <?php endforeach; ?>
+
+    <?php wp_head(); ?>
 </head>
 <body class="booking-confirmation-page">
+
+    <?php if (function_exists('wp_body_open')) {
+        wp_body_open();
+    } ?>
 
     <div class="confirmation_page">
         <div class="fcal_conf_wrap">
@@ -90,5 +96,7 @@
         }
 
     </script>
+
+    <?php wp_footer(); ?>
 </body>
 </html>
